@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://73ik4mmuvk4x"]
+
+[ext_resource type="Script" path="res://player_hitbox.gd" id="1_6r8ch"]
+[ext_resource type="Texture2D" uid="uid://bkpxuowvq6woy" path="res://art/placeholders/axe_placeholder.png" id="2_bm3e6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8k3u"]
+size = Vector2(113, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pphr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bm3e6")
+}],
+"loop": true,
+"name": &"defult",
+"speed": 5.0
+}]
+
+[node name="player_melee_attack" type="Area2D"]
+script = ExtResource("1_6r8ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(59, -1)
+shape = SubResource("RectangleShape2D_r8k3u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(64.25, -1)
+scale = Vector2(0.413043, 0.519481)
+sprite_frames = SubResource("SpriteFrames_pphr4")
+animation = &"defult"
+
+[node name="Attackduration" type="Timer" parent="."]
+wait_time = 0.113
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Attackduration" to="." method="_on_attackduration_timeout"]

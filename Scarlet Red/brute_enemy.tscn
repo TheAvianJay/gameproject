@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://hqckfkh51slv"]
+
+[ext_resource type="Script" path="res://brute_enemy.gd" id="1_r2jsm"]
+[ext_resource type="Texture2D" uid="uid://dwx3o14ccrw8f" path="res://art/placeholders/brute_placeholder.png" id="2_0xtw6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2gcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0xtw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyeao"]
+radius = 74.0
+height = 216.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_r2jsm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.49999, 25.5)
+scale = Vector2(0.416431, 0.470459)
+sprite_frames = SubResource("SpriteFrames_i2gcp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 25)
+shape = SubResource("CapsuleShape2D_dyeao")

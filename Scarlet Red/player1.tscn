@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqxouhj7nug1c"]
+
+[ext_resource type="Script" path="res://scarlet_red.gd" id="1_i01no"]
+[ext_resource type="PackedScene" uid="uid://cf74vsvp8cl6v" path="res://bullet.tscn" id="2_grs2s"]
+[ext_resource type="PackedScene" uid="uid://73ik4mmuvk4x" path="res://player_hitbox.tscn" id="3_ddym6"]
+[ext_resource type="Texture2D" uid="uid://bdslrrfjm65it" path="res://art/placeholders/placeholder_scarlet.png" id="4_8in3w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dadyv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8in3w")
+}],
+"loop": true,
+"name": &"standard",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atk0b"]
+size = Vector2(45, 121.188)
+
+[node name="player1" type="CharacterBody2D"]
+script = ExtResource("1_i01no")
+bullet_scene = ExtResource("2_grs2s")
+melee_scene = ExtResource("3_ddym6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.0625724, 11)
+scale = Vector2(0.14611, 0.260128)
+sprite_frames = SubResource("SpriteFrames_dadyv")
+animation = &"standard"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.374928, 11.4061)
+shape = SubResource("RectangleShape2D_atk0b")
+
+[node name="GunCooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MeleeCooldown" type="Timer" parent="."]
+wait_time = 0.581
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(41, 0)
+
+[node name="Dash_cooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="dash_duration" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
+[connection signal="timeout" from="MeleeCooldown" to="." method="_on_melee_cooldown_timeout"]
+[connection signal="timeout" from="Dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dirqk85ilsuya"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_admtr"]
+[ext_resource type="Texture2D" uid="uid://baoncm2tqff07" path="res://art/placeholders/place_holder_enemy.png" id="2_crwj6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syvj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_crwj6")
+}],
+"loop": true,
+"name": &"standing_still",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ek4cf"]
+radius = 21.0
+height = 122.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4msl8"]
+radius = 21.0
+height = 122.0
+
+[node name="Enemy" type="RigidBody2D"]
+position = Vector2(0, 27)
+freeze = true
+script = ExtResource("1_admtr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -11)
+scale = Vector2(0.461538, 0.420689)
+sprite_frames = SubResource("SpriteFrames_syvj2")
+animation = &"standing_still"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -11)
+shape = SubResource("CapsuleShape2D_ek4cf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -11)
+shape = SubResource("CapsuleShape2D_4msl8")
+
+[node name="enemy_gun_cooldown" type="Timer" parent="."]
+
+[node name="enemy_muzzle" type="Marker2D" parent="."]
+position = Vector2(36, -27)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

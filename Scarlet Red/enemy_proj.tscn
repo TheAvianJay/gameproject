@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp1qskme5o37l"]
+
+[ext_resource type="Script" path="res://enemy_proj.gd" id="1_gveds"]
+[ext_resource type="Texture2D" uid="uid://bxwkhyi4gmgdo" path="res://art/placeholders/bullet_trace.png" id="2_jjc8r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16etb"]
+radius = 2.0
+height = 20.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gveds")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jjc8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_16etb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(3, -2.98023e-07)
+scale = Vector2(2.2, 0.2)

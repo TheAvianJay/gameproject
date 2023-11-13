@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgrh15wbtul0w"]
+
+[ext_resource type="Texture2D" uid="uid://bls8o0mgiityt" path="res://art/placeholders/placeholder_ground.png" id="1_v6djs"]
+[ext_resource type="Texture2D" uid="uid://c13aebcf5mdl4" path="res://art/placeholders/collision_tile.png" id="2_10nai"]
+[ext_resource type="Texture2D" uid="uid://6vk05l4akmot" path="res://art/placeholders/place_holder2.png" id="3_4lth2"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_iv2gf"]
+tile_data = PackedInt32Array(0, 65541, 1, 65536, 5, 0, 65537, 65541, 1, 65538, 65541, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7r3f"]
+texture = ExtResource("1_v6djs")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6pr6"]
+texture = ExtResource("2_10nai")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_78yqo"]
+texture = ExtResource("3_4lth2")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5rty"]
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qg3u7"]
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q0mjx"]
+tile_size = Vector2i(64, 64)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain_test0"
+terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
+sources/5 = SubResource("TileSetAtlasSource_qg3u7")
+sources/4 = SubResource("TileSetAtlasSource_k5rty")
+sources/1 = SubResource("TileSetAtlasSource_o6pr6")
+sources/0 = SubResource("TileSetAtlasSource_q7r3f")
+sources/2 = SubResource("TileSetAtlasSource_78yqo")
+pattern_0 = SubResource("TileMapPattern_iv2gf")
+
+[node name="TileMap" type="TileMap"]
+scale = Vector2(0.993551, 1)
+tile_set = SubResource("TileSet_q0mjx")
+format = 2
+layer_0/modulate = Color(0.313726, 0.615686, 0.8, 1)
+layer_0/tile_data = PackedInt32Array(720899, 65538, 1, 720900, 65538, 1, 720901, 65538, 1, 720902, 65538, 1, 720903, 65538, 1, 720904, 65538, 1, 720905, 65538, 1, 720906, 65538, 1, 720907, 65538, 1, 720908, 65538, 1, 720909, 65538, 1, 720910, 65538, 1, 720911, 65538, 1, 720912, 65538, 1, 720913, 65538, 1, 720914, 65538, 1, 720915, 65538, 1, 720916, 65538, 1, 720917, 65538, 1, 720918, 65538, 1, 720919, 65538, 1, 720920, 65538, 1, 720921, 65538, 1, 786456, 65538, 1, 851991, 65538, 1, 851990, 65538, 1, 851989, 65538, 1, 851988, 65538, 1, 851987, 65538, 1, 851986, 65538, 1, 851985, 65538, 1, 851984, 65538, 1, 851983, 65538, 1, 851982, 65538, 1, 851981, 65538, 1, 851980, 65538, 1, 851979, 65538, 1, 851978, 65538, 1, 851977, 65538, 1, 851976, 65538, 1, 851975, 65538, 1, 851974, 65538, 1, 851973, 65538, 1, 786436, 65538, 1, 589825, 1, 0, 589824, 65537, 0, 524300, 65537, 0, 524301, 1, 0, 524302, 65537, 0, 327688, 1, 0, 327699, 1, 0, 327700, 65537, 0, 327687, 65537, 0, 327686, 1, 0, 65561, 65537, 0, 131097, 1, 0, 196633, 1, 0, 262169, 65537, 0, 65538, 65537, 0, 131074, 65537, 0, 196610, 65537, 0, 262146, 1, 0, 589851, 1, 0, 589852, 1, 0, 524303, 1, 0, 327701, 1, 0, 917532, 65536, 2, 786437, 0, 1, 786438, 0, 1, 786439, 0, 1, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 786448, 0, 1, 786449, 0, 1, 786450, 0, 1, 786451, 0, 1, 786452, 0, 1, 786453, 0, 1, 786454, 0, 1, 786455, 0, 1, 917505, 0, 1, 983041, 65538, 1, 983068, 65538, 1)

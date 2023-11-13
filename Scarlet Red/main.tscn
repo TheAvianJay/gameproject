@@ -1,0 +1,109 @@
+[gd_scene load_steps=18 format=3 uid="uid://cx6iqdnri3clr"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_vvrme"]
+[ext_resource type="PackedScene" uid="uid://cgrh15wbtul0w" path="res://tile_map.tscn" id="2_os4j7"]
+[ext_resource type="PackedScene" uid="uid://dirqk85ilsuya" path="res://enemy.tscn" id="4_0c5jh"]
+[ext_resource type="PackedScene" uid="uid://bp1qskme5o37l" path="res://enemy_proj.tscn" id="4_cj0el"]
+[ext_resource type="PackedScene" uid="uid://cqxouhj7nug1c" path="res://player1.tscn" id="4_q23af"]
+[ext_resource type="PackedScene" uid="uid://hqckfkh51slv" path="res://brute_enemy.tscn" id="6_wtal1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d4hh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83pm7"]
+size = Vector2(127.824, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wduvw"]
+size = Vector2(192.24, 64.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r371p"]
+size = Vector2(63.9125, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgr68"]
+size = Vector2(63.4089, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2236"]
+size = Vector2(64.4154, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4fy8"]
+size = Vector2(257.629, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqxwl"]
+size = Vector2(128.327, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrqr"]
+size = Vector2(192.24, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bklq"]
+size = Vector2(256.655, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05sij"]
+size = Vector2(64.4154, 256)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_vvrme")
+
+[node name="TileMap" parent="." instance=ExtResource("2_os4j7")]
+position = Vector2(103, 17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMap"]
+disable_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_d4hh3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(63.9122, 608)
+shape = SubResource("RectangleShape2D_83pm7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1311.96, 352)
+shape = SubResource("RectangleShape2D_wduvw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1631.77, 192)
+shape = SubResource("RectangleShape2D_r371p")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1824.26, 928)
+shape = SubResource("RectangleShape2D_cgr68")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(32.2077, 928)
+shape = SubResource("RectangleShape2D_e2236")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1151.44, 800.5)
+shape = SubResource("RectangleShape2D_j4fy8")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1791.81, 608)
+shape = SubResource("RectangleShape2D_vqxwl")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(479.593, 352)
+shape = SubResource("RectangleShape2D_pjrqr")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(896.28, 544)
+shape = SubResource("RectangleShape2D_4bklq")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
+position = Vector2(160.032, 192)
+shape = SubResource("RectangleShape2D_05sij")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(192.24, 704, 192.24, 768, 255.649, 768, 255.649, 832, 320.064, 832, 320.064, 897, 1536.91, 897, 1536.91, 832, 1600.32, 832, 1600.32, 768, 1663.73, 768, 1663.73, 704)
+
+[node name="Enemy" parent="." instance=ExtResource("4_0c5jh")]
+position = Vector2(619, 0)
+can_sleep = false
+lock_rotation = true
+freeze = false
+enemy_proj = ExtResource("4_cj0el")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_q23af")]
+position = Vector2(390, 190)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("6_wtal1")]
+position = Vector2(1329, 30)
+
+[connection signal="alert" from="Enemy" to="." method="_on_enemy_alert"]
+[connection signal="presence" from="CharacterBody2D" to="." method="_on_character_body_2d_presence"]
